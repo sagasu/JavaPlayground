@@ -1,4 +1,4 @@
-package com.sagasu.playground;
+package com.sagasu.model;
 
 /**
  * Created by foo on 24/01/2016.

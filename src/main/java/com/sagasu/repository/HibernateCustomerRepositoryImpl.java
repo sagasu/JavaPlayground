@@ -1,4 +1,6 @@
-package com.sagasu.playground;
+package com.sagasu.repository;
+
+import com.sagasu.model.Customer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +8,8 @@ import java.util.List;
 /**
  * Created by foo on 24/01/2016.
  */
-public class HibernateCustomerRepositoryImpl {
+public class HibernateCustomerRepositoryImpl implements HibernateCustomerRepository {
+    @Override
     public List<Customer> findAll(){
         List<Customer> customers = new ArrayList<Customer>();
 

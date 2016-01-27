@@ -9,9 +9,10 @@ import java.util.List;
  * Created by mateusz.kopij on 26/01/2016.
  */
 public class TypeInferencePlayground {
-    public void checkCasting(){
+    public List<String> checkCasting(String element){
         List<String> stringList = new ArrayList<>();
-        stringList.add("A");
+        stringList.add(element);
         stringList.addAll(Arrays.<String>asList());
+        return stringList;
     }
 }

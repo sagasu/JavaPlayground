@@ -10,6 +10,10 @@ import java.util.List;
  */
 public class HibernateCustomerServiceImpl implements HibernateCustomerService {
 
+    public HibernateCustomerServiceImpl(HibernateCustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
+    }
+
     public void setCustomerRepository(HibernateCustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
     }

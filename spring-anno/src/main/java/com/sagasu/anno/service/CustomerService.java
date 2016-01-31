@@ -1,4 +1,4 @@
-package com.sagasu.anno.repository;
+package com.sagasu.anno.service;
 
 
 
@@ -9,6 +9,6 @@ import java.util.List;
 /**
  * Created by foo on 24/01/2016.
  */
-public interface HibernateCustomerRepository {
+public interface CustomerService {
     List<Customer> findAll();
 }

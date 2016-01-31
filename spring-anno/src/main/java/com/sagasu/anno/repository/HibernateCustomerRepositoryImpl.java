@@ -2,20 +2,19 @@ package com.sagasu.anno.repository;
 
 
 import com.sagasu.anno.model.Customer;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by foo on 24/01/2016.
- */
-public class HibernateCustomerRepositoryImpl implements HibernateCustomerRepository {
+@Repository("customerRepository")
+public class HibernateCustomerRepositoryImpl implements CustomerRepository {
     @Override
     public List<Customer> findAll(){
         List<Customer> customers = new ArrayList<Customer>();
 
         Customer cus = new Customer();
-        cus.setFirstName("Matt");
+        cus.setFirstName("Matt2");
         customers.add(cus);
 
         return customers;

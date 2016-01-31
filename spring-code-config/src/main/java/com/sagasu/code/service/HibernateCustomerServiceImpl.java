@@ -10,6 +10,8 @@ import java.util.List;
 
 public class HibernateCustomerServiceImpl implements CustomerService {
 
+    public HibernateCustomerServiceImpl(){}
+
     public HibernateCustomerServiceImpl(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
     }
@@ -18,6 +20,7 @@ public class HibernateCustomerServiceImpl implements CustomerService {
         this.customerRepository = customerRepository;
     }
 
+    @Autowired
     private CustomerRepository customerRepository;// = new HibernateCustomerRepositoryImpl();
 
     @Override

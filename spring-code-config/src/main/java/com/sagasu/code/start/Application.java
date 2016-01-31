@@ -10,8 +10,10 @@ public class Application {
     {
         ApplicationContext ac = new AnnotationConfigApplicationContext(ApplicationConfig.class);
         CustomerService customerService = ac.getBean("customerService", CustomerService.class);
+        CustomerService customerService2 = ac.getBean("customerService", CustomerService.class);
 
-        System.out.println( "Hello World!" );
+        System.out.println( customerService );
+        System.out.println( customerService2 );
 
         System.out.println(customerService.findAll().get(0).getFirstName());
     }}

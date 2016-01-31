@@ -5,7 +5,10 @@
   <groupId>com.sagasu.playground</groupId>
   <artifactId>playground</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <packaging>jar</packaging>
+  <modules>
+    <module>spring-anno</module>
+  </modules>
+  <packaging>pom</packaging>
 
   <name>playground</name>
   <url>http://maven.apache.org</url>

@@ -11,9 +11,9 @@ import org.springframework.context.annotation.Configuration;
 public class ApplicationConfig {
     @Bean(name = "customerService")
     public CustomerService getCustomerService(){
-        HibernateCustomerServiceImpl hibernateCustomerService = new HibernateCustomerServiceImpl();
         // I can't believe how stupid it is!
-        hibernateCustomerService.setCustomerRepository(getCustomerRepository());
+        HibernateCustomerServiceImpl hibernateCustomerService = new HibernateCustomerServiceImpl(getCustomerRepository());
+//        hibernateCustomerService.setCustomerRepository(getCustomerRepository());
         return hibernateCustomerService;
     }
 

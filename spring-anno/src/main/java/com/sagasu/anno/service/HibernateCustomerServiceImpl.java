@@ -15,11 +15,12 @@ public class HibernateCustomerServiceImpl implements CustomerService {
 //        this.customerRepository = customerRepository;
 //    }
 
+    @Autowired
     public void setCustomerRepository(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
     }
 
-    @Autowired
+//    @Autowired
     private CustomerRepository customerRepository;// = new HibernateCustomerRepositoryImpl();
 
     @Override

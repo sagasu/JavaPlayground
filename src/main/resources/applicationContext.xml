@@ -7,7 +7,7 @@
     <bean name="customerRepository"
           class="com.sagasu.repository.HibernateCustomerRepositoryImpl"/>
     <bean name="customerService"
-            class="com.sagasu.service.HibernateCustomerServiceImpl" autowire="constructor">
+            class="com.sagasu.service.HibernateCustomerServiceImpl" autowire="constructor" scope="sesion" >
         <!--<constructor-arg index="0" ref="customerRepository"></constructor-arg>-->
         <!--<property name="customerRepository" ref="customerRepository"></property>-->
     </bean>

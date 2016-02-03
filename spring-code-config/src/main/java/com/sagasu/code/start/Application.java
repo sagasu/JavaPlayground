@@ -13,6 +13,7 @@ public class Application {
         CustomerService customerService2 = ac.getBean("customerService", CustomerService.class);
 
         System.out.println( customerService );
+        System.out.println( customerService.findAll().get(0).getFirstName() );
         System.out.println( customerService2 );
 
         System.out.println(customerService.findAll().get(0).getFirstName());

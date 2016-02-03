@@ -4,14 +4,19 @@ import com.sagasu.code.repository.CustomerRepository;
 import com.sagasu.code.repository.HibernateCustomerRepositoryImpl;
 import com.sagasu.code.service.CustomerService;
 import com.sagasu.code.service.HibernateCustomerServiceImpl;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
+import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
+import org.springframework.context.annotation.*;
 
 @Configuration
 @ComponentScan({"com.sagasu.code"})
+@PropertySource("classpath:app.properties")
 public class ApplicationConfig {
+
+    @Bean
+    public static PropertyPlaceholderConfigurer getPropertyPlaceholderConfigurer(){
+        return new PropertyPlaceholderConfigurer();
+    }
+
     @Bean(name = "customerService")
 //    @Scope("singleton")
     public CustomerService getCustomerService(){

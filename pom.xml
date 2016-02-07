@@ -8,6 +8,7 @@
   <modules>
     <module>spring-anno</module>
     <module>spring-code-config</module>
+    <module>spring-mvc</module>
   </modules>
   <packaging>pom</packaging>
 

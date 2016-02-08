@@ -9,7 +9,23 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>playground-spring-mvc</artifactId>
+    <artifactId>fitTrackerServlet</artifactId>
+
+    <build>
+        <finalName>${artifactId}</finalName>
+    <!--<plugins>-->
+    <!--<plugin>-->
+    <!--<artifactId>maven-assembly-plugin</artifactId>-->
+    <!--<version>2.2-beta-5</version>-->
+    <!--<configuration>-->
+
+        <!--<finalName>fitTrackerServlet-name</finalName>-->
+        <!--<appendAssemblyId>false</appendAssemblyId>-->
+    <!--</configuration>-->
+    <!--</plugin>-->
+    <!--</plugins>-->
+    </build>
+
     <packaging>war</packaging>
 
     <dependencies>

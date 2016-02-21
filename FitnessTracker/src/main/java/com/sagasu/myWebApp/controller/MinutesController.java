@@ -22,7 +22,8 @@ public class MinutesController {
 		
 		System.out.println("exercise addMinutes2: " + exercise.getMinutes());
 		
-		return "forward:addMoreMinutes";
+		// needs to have html, unless we change web.xml servlet from *.html to /
+		return "forward:addMoreMinutes.html";
 	}
 	
 	@RequestMapping(value = "/addMoreMinutes")

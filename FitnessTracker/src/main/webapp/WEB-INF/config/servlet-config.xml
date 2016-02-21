@@ -20,6 +20,20 @@
     <mvc:resources location="pdfs" mapping="/pdfs/**"></mvc:resources>
     <context:component-scan base-package="com.sagasu.myWebApp.controller"></context:component-scan>
 
+	<mvc:interceptors>
+	    <!-- it is interesting that some beans do not have id -->
+		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" >
+			<!-- it is intercepting it from request from http://localhost:8080/FitnessTracker/addMinutes.html?Language=en
+				that's why 'Language' is the value.
+			 -->
+			<property name="paramName" value="Language"></property>
+		</bean>
+	</mvc:interceptors>
+
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+		<property name="defaultLocale" value="en"></property>
+	</bean>
+
 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basename" value="messages"></property>
 	</bean>

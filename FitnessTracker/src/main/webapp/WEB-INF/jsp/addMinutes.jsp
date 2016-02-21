@@ -5,6 +5,7 @@
 <body>
 <h1>Add minutes</h1>
 
+Language : <a href="?Language=en" >en</a> |<a href="?Language=es" >es</a> 
 <form:form commandName="exercise">
 	<table>
 		<tr>

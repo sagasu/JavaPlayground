@@ -26,7 +26,6 @@
     <!--</plugins>-->
     </build>
 
-    <packaging>war</packaging>
 
     <dependencies>
         <dependency>
@@ -52,4 +51,5 @@
     </dependencies>
 
 
+    <packaging>war</packaging>
 </project>

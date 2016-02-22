@@ -1,7 +1,11 @@
 package com.sagasu.myWebApp.controller;
 
+import javax.naming.spi.DirStateFactory.Result;
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,9 +28,15 @@ public class GoalController {
 	}
 	
 	@RequestMapping(value = "addGoal", method = RequestMethod.POST)
-	public String updateGoal(@ModelAttribute("goal") Goal goal){
+	public String updateGoal(@Valid @ModelAttribute("goal") Goal goal, BindingResult result){
+		
+		System.out.println("has errors" + result.hasErrors());
 		
 		System.out.println("update Gaol" + goal.getMinutes());
+		
+		if(result.hasErrors()){
+			return "addGoal";
+		}
 		
 		return "redirect:addMinutes.html";
 	}

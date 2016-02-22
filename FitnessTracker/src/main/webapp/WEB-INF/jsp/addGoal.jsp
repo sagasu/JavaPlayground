@@ -25,6 +25,7 @@
 		</tr>
 	</table>
 </form:form>
-
+<!-- goal is kept in session -->
+<h1>our goal for today is ${goal.minutes}</h1>
 </body>
 </html>

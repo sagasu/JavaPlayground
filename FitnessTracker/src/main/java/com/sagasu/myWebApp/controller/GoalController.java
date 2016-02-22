@@ -13,6 +13,7 @@ import com.sagasu.myWebApp.model.Goal;
 @SessionAttributes("goal")
 public class GoalController {
 
+	// This is executed when a page loads, when you enter it in browser, because it is get
 	@RequestMapping(value = "addGoal", method = RequestMethod.GET)
 	public String addGoal(Model model){
 		Goal goal = new Goal();

@@ -1,6 +1,11 @@
 package com.sagasu.myWebApp.model;
 
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.Range;
+
 public class Exercise {
+	@NotNull
 	private String activity;
 	
 	public String getActivity() {
@@ -19,5 +24,6 @@ public class Exercise {
 		this.minutes = minutes;
 	}
 
+	@Range(min =1, max = 120)
 	private int minutes;
 }

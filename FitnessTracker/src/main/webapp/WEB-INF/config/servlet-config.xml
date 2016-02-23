@@ -19,6 +19,42 @@
     <!-- ** (double asterix) means recursive -->
     <mvc:resources location="pdfs" mapping="/pdfs/**"></mvc:resources>
     <context:component-scan base-package="com.sagasu.myWebApp.controller"></context:component-scan>
+	
+	<!-- I can't believe that all this has to be done in xml with so many magic strings inside.
+	And how manual is it.
+	 -->
+	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<property name="order" value="1"></property>
+		<property name="contentNegotiationManager">
+			<bean class="org.springframework.web.accept.ContentNegotiationManager">
+				<constructor-arg>
+					<bean class="org.springframework.web.accept.PathExtensionContentNegotiationStrategy">
+						<constructor-arg>
+							<map>
+								<entry key="json" value="application/json"></entry>
+								<entry key="xml" value="application/xml"></entry>
+							</map>
+						</constructor-arg>
+					</bean>
+				</constructor-arg>
+			</bean>
+		</property>
+		
+		<property name="defaultViews">
+			<list>
+				<bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView" />
+				
+				<bean class="org.springframework.web.servlet.view.xml.MarshallingView">
+					<constructor-arg>
+						<bean class="org.springframework.oxm.xstream.XStreamMarshaller">
+							<property name="autodetectAnnotations" value="true"></property>
+						</bean>
+					</constructor-arg>
+				</bean>
+			</list>
+		</property>
+		
+	</bean>
 
 	<mvc:interceptors>
 	    <!-- it is interesting that some beans do not have id -->
@@ -28,6 +64,7 @@
 			 -->
 			<property name="paramName" value="Language"></property>
 		</bean>
+		
 	</mvc:interceptors>
 
 	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
@@ -42,7 +79,13 @@
         <!--<property name="alwaysUseFullPath" value="true"></property>-->
         <property name="prefix" value="/WEB-INF/jsp/"></property>
         <property name="suffix" value=".jsp"></property>
+        <!-- bean with the highest order is resolved last -->
+        <property name="order" value="2"></property>
     </bean>
+
+	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<property name="order" value="0"></property>
+	</bean>
 
     <!--<mvc:default-servlet-handler/>-->
 </beans>

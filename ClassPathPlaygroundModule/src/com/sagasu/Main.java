@@ -1,4 +1,4 @@
-package main.java.com.sagasu;
+package com.sagasu;
 
 public class Main {
 	public static void main(String args[]){

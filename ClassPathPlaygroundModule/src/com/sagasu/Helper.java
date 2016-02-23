@@ -1,4 +1,4 @@
-package main.java.com.sagasu;
+package com.sagasu;
 
 public class Helper {
 

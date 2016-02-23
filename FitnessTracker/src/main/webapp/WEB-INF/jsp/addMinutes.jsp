@@ -5,10 +5,10 @@
 <body>
 <h1>Add minutes</h1>
 
-<script type="text/javascript" src="jquery-1.12.1.js" />
-
-<script type="text/javascript" src="addMinutes.js" />
-
+<script type="text/javascript" src="jquery-1.12.1.js" ></script>
+<h1>Add minutes</h1>
+<script type="text/javascript" src="addMinutes.js" /></script>
+<h1>Add minutes</h1>
 
 Language : <a href="?Language=en" >en</a> |<a href="?Language=es" >es</a> 
 <form:form commandName="exercise">

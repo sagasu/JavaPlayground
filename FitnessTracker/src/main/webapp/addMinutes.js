@@ -5,7 +5,7 @@ $(document).ready(
 				}, function(data){
 					var html = '<option value=""> -- Please select one -- </option>';
 					var length = data.length;
-					for(var i = 0; i < len;){
+					for(var i = 0; i < length;i++){
 						html += '<option value="' + data[i].desc + '">'
 							+ data[i].desc + '</option>'
 					}

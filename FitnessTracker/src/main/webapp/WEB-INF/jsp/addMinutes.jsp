@@ -5,6 +5,11 @@
 <body>
 <h1>Add minutes</h1>
 
+<script type="text/javascript" src="jquery-1.12.1.js" />
+
+<script type="text/javascript" src="addMinutes.js" />
+
+
 Language : <a href="?Language=en" >en</a> |<a href="?Language=es" >es</a> 
 <form:form commandName="exercise">
 	<table>
@@ -13,9 +18,12 @@ Language : <a href="?Language=en" >en</a> |<a href="?Language=es" >es</a>
 			<td>
 				<form:input path="minutes"/>
 			</td>
+			<td>
+				<form:select id="activities" path="activity"/>
+			</td>
 		</tr>
 		<tr>
-			<td colspan="2">
+			<td colspan="3">
 				<input type="submit" value="Enter excercise">
 			</td>
 		</tr>

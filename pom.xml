@@ -10,7 +10,7 @@
     <module>spring-code-config</module>
     <module>FitnessTracker</module>
     <module>playground-default</module>
-    <module>cucamber-tests</module>
+    <module>cucumber-tests</module>
   </modules>
   <packaging>pom</packaging>
 

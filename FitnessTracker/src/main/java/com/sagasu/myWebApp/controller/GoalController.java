@@ -38,7 +38,8 @@ public class GoalController {
 			return "addGoal";
 		}
 		
-		return "redirect:addMinutes.html";
+		//return "redirect:addMinutes.html";
+		return "redirect:index.jsp";
 	}
 }
 

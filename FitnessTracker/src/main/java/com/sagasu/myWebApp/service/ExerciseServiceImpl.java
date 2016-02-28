@@ -10,7 +10,6 @@ import com.sagasu.myWebApp.model.Activity;
 @Service("exerciseService")
 public class ExerciseServiceImpl implements ExerciseService {
 
-	@Override
 	public List<Activity> findAllActivities(){
 		List<Activity> activities = new ArrayList<Activity>();
 		Activity run = new Activity();

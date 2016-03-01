@@ -19,7 +19,7 @@
     <!-- ** (double asterix) means recursive -->
     <mvc:resources location="assets" mapping="/assets/**"></mvc:resources>
     <mvc:resources location="pdfs" mapping="/pdfs/**"></mvc:resources>
-    <context:component-scan base-package="com.sagasu.myWebApp"></context:component-scan>
+    <context:component-scan base-package="com.sagasu.myWebApp.controller"></context:component-scan>
 	
 	<!-- I can't believe that all this has to be done in xml with so many magic strings inside.
 	And how manual is it.

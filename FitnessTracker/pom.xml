@@ -34,22 +34,22 @@
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-context</artifactId>
-      <version>3.2.0.RELEASE</version>
+      <version>3.2.16.RELEASE</version>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-core</artifactId>
-      <version>3.2.0.RELEASE</version>
+      <version>3.2.16.RELEASE</version>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-beans</artifactId>
-      <version>3.2.0.RELEASE</version>
+      <version>3.2.16.RELEASE</version>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-expression</artifactId>
-      <version>3.2.0.RELEASE</version>
+      <version>3.2.16.RELEASE</version>
     </dependency>
     <dependency>
       <groupId>commons-logging</groupId>
@@ -60,7 +60,7 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>3.2.0.RELEASE</version>
+            <version>3.2.16.RELEASE</version>
         </dependency>
 
         <dependency>
@@ -102,14 +102,14 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-oxm</artifactId>
-			<version>3.2.0.RELEASE</version>
+			<version>3.2.16.RELEASE</version>
 		</dependency>
 		
 		<!-- Dependencies for jpa and hibernate -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
-			<version>3.2.0.RELEASE</version>
+			<version>3.2.16.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.transaction</groupId>
@@ -130,7 +130,7 @@
 		<dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
-            <version>3.2.0.RELEASE</version>
+            <version>3.2.16.RELEASE</version>
         </dependency>
 		
     </dependencies>

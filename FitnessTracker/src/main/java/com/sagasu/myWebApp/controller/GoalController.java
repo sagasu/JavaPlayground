@@ -1,8 +1,8 @@
 package com.sagasu.myWebApp.controller;
 
-import javax.naming.spi.DirStateFactory.Result;
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,11 +12,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.sagasu.myWebApp.model.Goal;
+import com.sagasu.myWebApp.service.GoalService;
 
 @Controller
 @SessionAttributes("goal")
 public class GoalController {
 
+	@Autowired
+	private GoalService goalService;
+	
 	// This is executed when a page loads, when you enter it in browser, because it is get
 	@RequestMapping(value = "addGoal", method = RequestMethod.GET)
 	public String addGoal(Model model){
@@ -36,6 +40,8 @@ public class GoalController {
 		
 		if(result.hasErrors()){
 			return "addGoal";
+		}else{
+			goalService.save(goal);
 		}
 		
 		return "redirect:addMinutes.html";

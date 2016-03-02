@@ -3,7 +3,8 @@ package com.sagasu;
 import sun.misc.Unsafe;
 import java.lang.reflect.Field;
 
-
+// Trying to see when GC kiks in and address space is being reused. But GC is being called only on weaker machines.
+// Otherwise memory address is just growing
 public class Sawtooth {
     private static Unsafe unsafe;
 
@@ -38,7 +39,7 @@ public class Sawtooth {
     }
 
     public static void main(String... args) throws Exception {
-        for (int i = 0; i < 32000; i++) {
+        for (int i = 0; i < 64000; i++) {
             Object mine = new GCMe();
             long address = addressOf(mine);
             System.out.println(address);

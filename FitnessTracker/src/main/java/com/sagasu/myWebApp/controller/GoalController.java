@@ -1,5 +1,7 @@
 package com.sagasu.myWebApp.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +48,15 @@ public class GoalController {
 		
 		return "redirect:addMinutes.html";
 		//return "redirect:index.jsp";
+	}
+	
+	@RequestMapping(value="getGoals", method=RequestMethod.GET)
+	public String getGoals(Model model){
+		List<Goal> goals = goalService.findAllGoals();
+		
+		model.addAttribute("goals", goals);
+		
+		return "getGoals";
 	}
 }
 

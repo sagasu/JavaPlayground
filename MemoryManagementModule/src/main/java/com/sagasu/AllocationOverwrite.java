@@ -4,6 +4,7 @@ import java.util.Random;
 
 // This runs as java process, you can fire up showJstatInfo.bat while it is running.
 // jps command will print currently running java aps. But if you run it from IDE then it's java process.
+// Use -XX:+UseG1GC in run/debug setup vm option and notice how slower the dots appear in screen - because of much slower allocation
 public class AllocationOverwrite {
     public static void main(String... args){
         int arraySize = 1000000;

@@ -1,6 +1,7 @@
 package phanRef;
 
 import java.lang.ref.PhantomReference;
+import java.lang.ref.Reference;
 import java.lang.ref.ReferenceQueue;
 import java.util.ArrayList;
 
@@ -22,6 +23,12 @@ public class PhantomReferences {
 
         for (PhantomReference<Person> reference : list){
             System.out.println(reference.isEnqueued());
+        }
+
+        Reference<? extends Person> referenceFromQueue;
+        while((referenceFromQueue = queue.poll()) != null){
+            ((FinalizePerson)referenceFromQueue).cleanup();
+            referenceFromQueue.clear();
         }
 
     }

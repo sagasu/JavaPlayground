@@ -1,8 +1,8 @@
 package com.sagasu.myWebApp.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,13 +15,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sagasu.myWebApp.model.Activity;
 import com.sagasu.myWebApp.model.Exercise;
+import com.sagasu.myWebApp.model.Goal;
 import com.sagasu.myWebApp.service.ExerciseService;
 
 @Controller
 public class MinutesController {
 	
 	@Autowired
-	private ExerciseService exersiseService;
+	private ExerciseService exerciseService;
 	
 	@RequestMapping(value = "/addMinutes", method=RequestMethod.GET)
 	public String getMinutes(@ModelAttribute ("exercise") Exercise exercise) {
@@ -32,11 +33,16 @@ public class MinutesController {
 	}
 	
 	@RequestMapping(value = "/addMinutes", method=RequestMethod.POST)
-	public String addMinutes(@Valid @ModelAttribute ("exercise") Exercise exercise, BindingResult result) {
+	public String addMinutes(@Valid @ModelAttribute ("exercise") Exercise exercise, HttpSession session, BindingResult result) {
 		
 		System.out.println("exercise: " + exercise.getMinutes());
 		if(result.hasErrors()){
 			return "addMinutes";
+		}else{
+			Goal goal = (Goal)session.getAttribute("goal");
+			
+			exercise.setGoal(goal);
+			exerciseService.save(exercise);
 		}
 		
 		return "addMinutes";
@@ -44,7 +50,7 @@ public class MinutesController {
 	
 	@RequestMapping(value = "/activities", method = RequestMethod.GET)
 	public @ResponseBody List<Activity> findAllActivities(){
-		return exersiseService.findAllActivities();
+		return exerciseService.findAllActivities();
 		
 	}
 	

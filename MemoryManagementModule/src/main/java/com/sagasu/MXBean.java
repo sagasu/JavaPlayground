@@ -5,6 +5,9 @@ import java.lang.management.GarbageCollectorMXBean;
 import java.lang.management.ManagementFactory;
 import java.util.List;
 
+// Change VM options in Run/Debug Configurations:
+// -XX:+UseConcMarkSweepGC
+
 public class MXBean {
     public static void main(String[] args){
         List<GarbageCollectorMXBean> list = ManagementFactory.getGarbageCollectorMXBeans();

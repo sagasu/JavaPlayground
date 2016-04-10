@@ -15,6 +15,7 @@ public class PrimeFun {
 
         doubleOffirstEvenGreaterThanThree();
         doubleOffirstEvenGreaterThanThree2();
+        doubleOffirstEvenGreaterThanThree3();
     }
 
     private static boolean isPrime(final int number){
@@ -59,6 +60,27 @@ public class PrimeFun {
         values.stream()
                 .filter(e -> e > 3)
                 .filter(e -> e % 2 == 0)
+                .map(e -> e * 2)
+                .findFirst()
+                .get());
+    }
+
+    public static boolean isGreaterThan3(final int number){
+        return number > 3;
+    }
+
+    public static boolean isEven(final int number){
+        return number % 2 == 0;
+    }
+
+    private static void doubleOffirstEvenGreaterThanThree3(){
+        List<Integer> values = Arrays.asList(1,2,3,4,5,6,7,8,9,10);
+
+        System.out.println(
+        values.stream()
+                // I love this way of spec method
+                .filter(PrimeFun::isGreaterThan3)
+                .filter(PrimeFun::isEven)
                 .map(e -> e * 2)
                 .findFirst()
                 .get());

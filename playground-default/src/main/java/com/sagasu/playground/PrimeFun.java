@@ -66,22 +66,31 @@ public class PrimeFun {
     }
 
     public static boolean isGreaterThan3(final int number){
+        System.out.println("isGreaterThan3 " + number);
         return number > 3;
     }
 
     public static boolean isEven(final int number){
+        System.out.println("isEven " + number);
         return number % 2 == 0;
+    }
+
+    public static int doubleIt(int number){
+        System.out.println("doubleIt " + number);
+        return number * 2;
     }
 
     private static void doubleOffirstEvenGreaterThanThree3(){
         List<Integer> values = Arrays.asList(1,2,3,4,5,6,7,8,9,10);
 
+        // lazy & composition - I added sout statements to see that streams are lazy in calls.
         System.out.println(
         values.stream()
                 // I love this way of spec method
                 .filter(PrimeFun::isGreaterThan3)
+                // Is this a higher order function then, because I am passing a function to a function.
                 .filter(PrimeFun::isEven)
-                .map(e -> e * 2)
+                .map(PrimeFun::doubleIt)
                 .findFirst()
                 .get());
     }

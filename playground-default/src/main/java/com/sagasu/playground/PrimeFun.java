@@ -81,7 +81,8 @@ public class PrimeFun {
     }
 
     private static void doubleOffirstEvenGreaterThanThree3(){
-        List<Integer> values = Arrays.asList(1,2,3,4,5,6,7,8,9,10);
+        // notice that I changed order 4 and 5 to see lazynes
+        List<Integer> values = Arrays.asList(1,2,3,5,4,6,7,8,9,10);
 
         // lazy & composition - I added sout statements to see that streams are lazy in calls.
         System.out.println(

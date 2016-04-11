@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class PrimeFun {
 
@@ -85,14 +86,12 @@ public class PrimeFun {
         List<Integer> values = Arrays.asList(1,2,3,5,4,6,7,8,9,10);
 
         // lazy & composition - I added sout statements to see that streams are lazy in calls.
-        System.out.println(
-        values.stream()
+        Stream<Integer> sti =  values.stream()
                 // I love this way of spec method
                 .filter(PrimeFun::isGreaterThan3)
                 // Is this a higher order function then, because I am passing a function to a function.
                 .filter(PrimeFun::isEven)
-                .map(PrimeFun::doubleIt)
-                .findFirst()
-                .get());
+                .map(PrimeFun::doubleIt);
+        System.out.println(sti.findFirst());
     }
 }

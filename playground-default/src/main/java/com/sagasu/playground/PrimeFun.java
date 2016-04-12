@@ -3,6 +3,7 @@ package com.sagasu.playground;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -17,6 +18,7 @@ public class PrimeFun {
         doubleOffirstEvenGreaterThanThree();
         doubleOffirstEvenGreaterThanThree2();
         doubleOffirstEvenGreaterThanThree3();
+        doubleOffirstEvenGreaterThanThree4();
     }
 
     private static boolean isPrime(final int number){
@@ -90,6 +92,20 @@ public class PrimeFun {
                 // I love this way of spec method
                 .filter(PrimeFun::isGreaterThan3)
                 // Is this a higher order function then, because I am passing a function to a function.
+                .filter(PrimeFun::isEven)
+                .map(PrimeFun::doubleIt);
+        System.out.println(sti.findFirst());
+    }
+
+    private static void doubleOffirstEvenGreaterThanThree4(){
+        // notice that I changed order 4 and 5 to see lazynes
+        List<Integer> values = Arrays.asList(1,2,3,5,4,6,7,8,9,10);
+        Predicate<Integer> isGT3 = value -> value > 3;
+
+        Function<Integer, Predicate<Integer>> isGT = pivot -> number -> number > pivot;
+
+        Stream<Integer> sti =  values.stream()
+                .filter(isGT.apply(3))
                 .filter(PrimeFun::isEven)
                 .map(PrimeFun::doubleIt);
         System.out.println(sti.findFirst());

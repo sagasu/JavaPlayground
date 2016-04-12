@@ -110,4 +110,35 @@ public class PrimeFun {
                 .map(PrimeFun::doubleIt);
         System.out.println(sti.findFirst());
     }
+
+    private static int calculateValue(){
+        List<Integer> values = Arrays.asList(1,2,3,5,4,6,7,8,9,10);
+
+        return totalValues(values, e -> true);
+    }
+
+    private static int totalValues(List<Integer> numbers, Selector selector){
+        int result = 0;
+        for(int e: numbers){
+            if(selector.pick(e)) result += e;
+        }
+        return result;
+    }
+
+    private static int totalValues2(List<Integer> numbers, Predicate<Integer> selector){
+        return numbers.stream()
+                .filter(selector)
+                .reduce(0, Math::addExact);
+    }
+
+    interface Selector{
+        public boolean pick(int value);
+    }
+
+    class EvenSelector implements Selector{
+        @Override
+        public boolean pick(final int value){
+            return value % 2 == 0;
+        }
+    }
 }

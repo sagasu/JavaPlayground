@@ -19,6 +19,9 @@ public class PrimeFun {
         doubleOffirstEvenGreaterThanThree2();
         doubleOffirstEvenGreaterThanThree3();
         doubleOffirstEvenGreaterThanThree4();
+
+        System.out.println(calculateValue());
+        slowDouble();
     }
 
     private static boolean isPrime(final int number){
@@ -129,6 +132,26 @@ public class PrimeFun {
         return numbers.stream()
                 .filter(selector)
                 .reduce(0, Math::addExact);
+    }
+
+    private static int slowDoubleIt(int number){
+        try{Thread.sleep(1000);} catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return number * 2;
+    }
+
+    private static void slowDouble(){
+        List<Integer> numbers = Arrays.asList(1,2,3,4,5,6);
+
+        // referential transparency
+
+        System.out.println(
+                // Much faster parallel when method executed is very slow
+                numbers.parallelStream()
+                    .mapToInt(PrimeFun::slowDoubleIt)
+                    .sum()
+        );
     }
 
     interface Selector{

@@ -25,12 +25,20 @@ public class MyFileFilter {
         //A functional interface is an interface that has just one abstract method, and thus represents a single function contract.
         //If an interface has more than one method (it is not a funcitonal interface) and can not be implemented thru lambda.
 
+        // Methods from Object don't count if they exist in implemented interface.
+        StillFunctionalInterface sfi = () -> System.out.println("Still funcitonal interface");
+
 
         // Using a helper interface when interface has multiple methods, but it is passed in a method, so the statement above still holds.
         Component c = new Applet();
         c.addMouseListener((ClickedListener)(e)->System.out.println("Clicked !"));
 
     }
+}
+
+interface StillFunctionalInterface {
+    void someMethod();
+    boolean equals(Object o);
 }
 
 interface ClickedListener extends MouseListener

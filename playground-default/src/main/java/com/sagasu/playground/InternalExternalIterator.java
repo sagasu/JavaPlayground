@@ -19,7 +19,7 @@ public class InternalExternalIterator {
             System.out.println(e);
         }
 
-        // this is internal iterator
+        // this is internal iterator, this is prior to java 8 it required providing class, which is stupid
         values.forEach(new Consumer<Integer>(){
 
             @Override
@@ -27,5 +27,14 @@ public class InternalExternalIterator {
                 System.out.println(integer);
             }
         });
+
+        // internal iterator with lambda to rescue but keeping the method (forEach) introduced prior to 8
+        values.forEach((Integer value) -> System.out.println(value));
+
+        // I am surprised to see that Java is finally capable to guess the type
+        values.forEach(value -> System.out.println(value));
+
+        // yup, finally using method reference
+        values.forEach(System.out::println);
     }
 }

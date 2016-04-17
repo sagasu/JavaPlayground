@@ -11,6 +11,30 @@ public class ConcurrencyFun {
         CompletableFutureConcurrency();
 
         CompletableFutureWithCompleteConcurrency();
+
+        CompletableFutureWithThenApply();
+    }
+
+    private static void CompletableFutureWithThenApply() {
+        CompletableFuture cf1 = CompletableFuture.supplyAsync( ( ) -> {
+            System.out.println("executing cf1");
+            IntStream.range(1, 10).forEach(x -> System.out.println("cf: " + x));
+            return 10;
+        } );
+
+        // 'a' is a result from cf1 - in this case 10
+        CompletableFuture cf2 = cf1.thenApply((a) -> {
+            System.out.println("executing then aply with " + a);
+            IntStream.range(1, 10).forEach(x -> System.out.println("thenApply: " + x));
+            return "this is result of cf1";
+        } );
+
+        // 'a' is a result from cf1 - in this case "this is result of cf1"
+        CompletableFuture cf3 = cf2.thenApply((a) -> {
+            System.out.println("executing second then apply with: " + a);
+            IntStream.range(1, 10).forEach(x -> System.out.println("second thenApply: " + x));
+            return "this is result of cf2";
+        } );
     }
 
     private static void CompletableFutureWithCompleteConcurrency() {

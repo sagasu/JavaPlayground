@@ -15,6 +15,19 @@ public class ConcurrencyFun {
         CompletableFutureWithThenApply();
 
         CompletableFutureRunAsync();
+
+        CompletableFutureFluentFlow();
+    }
+
+    private static void CompletableFutureFluentFlow() {
+        CompletableFuture cf1 = CompletableFuture
+                .runAsync( ( ) -> {
+                    System.out.println("executing CompletableFutureFluentFlow");
+                    IntStream.range(1, 10).forEach(x -> System.out.println("CompletableFutureFluentFlow: " + x)); } )
+                .whenComplete((x,y) -> System.out.println(x))
+                .thenApply(x -> {System.out.println(x); return 10;})
+                .thenAccept(x -> System.out.println(x))
+                .thenRun(() -> System.out.println("almost there"));
     }
 
     private static void CompletableFutureRunAsync() {
@@ -34,6 +47,7 @@ public class ConcurrencyFun {
         } );
 
         // 'a' is a result from cf1 - in this case 10
+        // thenApply is being executed immediately after cf1 finishes executing it's code - it means that as soon as results are ready execute theApply
         CompletableFuture cf2 = cf1.thenApply((a) -> {
             System.out.println("executing then aply with " + a);
             IntStream.range(1, 10).forEach(x -> System.out.println("thenApply: " + x));

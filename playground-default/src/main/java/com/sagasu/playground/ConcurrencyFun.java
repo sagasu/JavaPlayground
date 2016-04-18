@@ -13,6 +13,17 @@ public class ConcurrencyFun {
         CompletableFutureWithCompleteConcurrency();
 
         CompletableFutureWithThenApply();
+
+        CompletableFutureRunAsync();
+    }
+
+    private static void CompletableFutureRunAsync() {
+        // runAsync doesn't return a value
+        CompletableFuture cf1 = CompletableFuture.runAsync( ( ) -> {
+            System.out.println("executing cf1");
+            IntStream.range(1, 10).forEach(x -> System.out.println("cf: " + x));
+        } );
+
     }
 
     private static void CompletableFutureWithThenApply() {

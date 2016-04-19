@@ -2,7 +2,6 @@ package com.sagasu.playground;
 
 import java.util.concurrent.*;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 public class ConcurrencyFun {
     public static void main(String[] args) {

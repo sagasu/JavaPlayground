@@ -2,10 +2,12 @@ package com.sagasu.playground;
 
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import rx.Observable;
+import rx.schedulers.Schedulers;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.FutureTask;
 
 public class MyRxFun {
     public static void main(String[] args) {
@@ -20,6 +22,21 @@ public class MyRxFun {
         observable = Observable.from(generateFibonacciList());
         observable.subscribe((i) -> {
             System.out.println(i);
+        });
+
+
+        Observable<List<Integer>> observableFuture = null;
+        FutureTask<List<Integer>> future = new FutureTask<List<Integer>>(() -> {
+            return generateFibonacciList();
+        });
+
+        observableFuture = Observable.from(future);
+        Schedulers.computation().createWorker().schedule(() -> future.run());
+
+        observableFuture.subscribe((list) -> {
+            list.forEach((i) -> {
+                System.out.println(i);
+            });
         });
 
     }

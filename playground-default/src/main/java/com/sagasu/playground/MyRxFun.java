@@ -19,14 +19,20 @@ public class MyRxFun {
 //            System.out.println(i);
 //        });
 
+        System.out.println(Thread.currentThread().getName());
         observable = Observable.from(generateFibonacciList());
-        observable.subscribe((i) -> {
-            System.out.println(i);
-        });
+        observable.subscribe(
+                //onNext
+                (i) -> { System.out.println(i); },
+                //onError
+                (i) -> System.out.println("error"),
+                //onCompleted
+                () -> System.out.println("Finished printing fibonnaci"));
 
 
         Observable<List<Integer>> observableFuture = null;
         FutureTask<List<Integer>> future = new FutureTask<List<Integer>>(() -> {
+            System.out.println(Thread.currentThread().getName());
             return generateFibonacciList();
         });
 
@@ -35,6 +41,7 @@ public class MyRxFun {
 
         observableFuture.subscribe((list) -> {
             list.forEach((i) -> {
+                System.out.println(Thread.currentThread().getName());
                 System.out.println(i);
             });
         });

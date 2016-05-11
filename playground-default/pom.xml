@@ -12,4 +12,12 @@
     <artifactId>playground-default</artifactId>
     <groupId>com.sagasu.playground.playground-default</groupId>
 
+    <dependencies>
+        <dependency>
+            <groupId>io.reactivex</groupId>
+            <artifactId>rxjava</artifactId>
+            <version>1.1.5</version>
+        </dependency>
+    </dependencies>
+
 </project>

@@ -8,5 +8,23 @@ public class MyBiFunction {
             return s + t;
         };
         System.out.println(concatFunction.apply("hell","o"));
+
+
+        concatFunction = MyBiFunction::concatString;
+        System.out.println(concatFunction.apply("he","llo2"));
+
+        MyBiFunction instance = new MyBiFunction();
+        // first class citizen
+        concatFunction = instance::concatString2;
+        System.out.println(concatFunction.apply("hello"," w"));
+
+    }
+
+    private static String concatString(String a, String b){
+        return a+b;
+    }
+
+    String concatString2(String a, String b){
+        return a+b;
     }
 }

@@ -12,6 +12,8 @@ public class LamdasWithCheckedExceptions {
         //return className -> Class.forName(className);
 
 
+        //you can use OpenGamma strata package that has helper methods to wrap checked exceptions.
+
         // not important, just to do something, the code above is important
         return new Function<String, Class>() {
             @Override

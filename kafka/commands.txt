@@ -1,0 +1,18 @@
+#start zookeeper
+zookeeper-server-start.bat ./config/zookeeper.properties
+
+#start kafka
+kafka-server-start.bat ./config/server.properties
+
+#list topics, connecting to zookeeper
+kafka-topics.bat --bootstrap-server localhost:9092 --list
+
+#create topics
+kafka-topics.bat --bootstrap-server localhost:9092 --topic first_topic --create
+
+kafka-topics.bat --bootstrap-server localhost:9092 --topic third_topic --create --partitions 3 --replication-factor 1
+
+#describe topic
+kafka-topics.bat --bootstrap-server localhost:9092 --topic first_topic --describe
+
+kafka-console-producer.bat

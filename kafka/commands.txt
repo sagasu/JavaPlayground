@@ -15,4 +15,24 @@ kafka-topics.bat --bootstrap-server localhost:9092 --topic third_topic --create 
 #describe topic
 kafka-topics.bat --bootstrap-server localhost:9092 --topic first_topic --describe
 
-kafka-console-producer.bat
+#produce messages
+kafka-console-producer.bat --bootstrap-server localhost:9092 --topic first_topic
+
+kafka-console-producer.bat --bootstrap-server localhost:9092 --topic first_topic --producer-property acks=all
+
+#consumer 
+kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic first_topic
+
+kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic first_topic --from-beginning
+
+kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic first_topic --group my-application
+
+kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic first_topic --group my-second-application --from-beginning
+
+#consumer-groups
+kafka-consumer-groups.bat --bootstrap-server localhost:9092 --list
+
+kafka-consumer-groups.bat --bootstrap-server localhost:9092 --describe --group console-consumer-36587
+
+
+kafka-consumer-groups.bat --bootstrap-server localhost:9092 --group console-consumer-36587 --reset-offsets --to-earliest

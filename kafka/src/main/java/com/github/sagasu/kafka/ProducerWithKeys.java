@@ -1,17 +1,17 @@
 package com.github.sagasu.kafka;
 
-import jdk.nashorn.internal.codegen.CompilerConstants;
 import org.apache.kafka.clients.producer.*;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.Properties;
+import java.util.concurrent.ExecutionException;
 
-public class ProducerWithCallback {
-    public static void main(String[] args) {
+public class ProducerWithKeys {
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
 
-        final Logger logger = LoggerFactory.getLogger(ProducerWithCallback.class);
+        final Logger logger = LoggerFactory.getLogger(ProducerWithKeys.class);
 
         Properties prop = new Properties();
         String servers = "localhost:9092";
@@ -22,8 +22,12 @@ public class ProducerWithCallback {
         KafkaProducer<String,String> producer = new KafkaProducer<String, String>(prop);
 
         for(int i=0; i < 10;i++) {
-            ProducerRecord<String, String> record = new ProducerRecord<String, String>("first_topic", "hello" + Integer.toString(i));
+            String topic = "first_topic";
+            String val = "hello" + Integer.toString(i);
+            String key = "id_" + Integer.toString(i);
+            ProducerRecord<String, String> record = new ProducerRecord<String, String>(topic,key, val);
 
+            logger.info("key " + key);
             producer.send(record, new Callback() {
                 public void onCompletion(RecordMetadata recordMetadata, Exception e) {
                     if (e == null) {
@@ -35,7 +39,7 @@ public class ProducerWithCallback {
                         logger.error("Error when producing", e);
                     }
                 }
-            });
+            }).get(); // nasty, don't force async to act as sync, crappy performance
         }
 
         //flush
